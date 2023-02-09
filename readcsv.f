@@ -5,7 +5,7 @@
          real :: A1, A2, A3, A4, A5, A6
          integer :: i, ierror
 
-         open(10, file = "data1.csv", status = 'old', Iostat = ierror)
+         open(10, file = "data.csv", status = 'old', Iostat = ierror)
          
          ! Check if there was an error opening the file
          If (ierror /= 0) Then

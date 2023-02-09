@@ -52,7 +52,7 @@ end module ModReactionRatePerturb
 
 ! Declare a main program to use the reaction rate module
 program Main
-  use ModRelectionRatePerturb
+  use ModReactionRatePerturb
   implicit none
 
   ! Call the subroutine to read the file

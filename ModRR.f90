@@ -5,7 +5,6 @@ module ModReactionRatePerturb
   integer :: i, ierror
   
  ! Declare variables to store the respective reaction rates
-  real :: A1, A2, A3, A4, A5, A6
   real, dimension(nRatesMax) :: PerturbedRates, rates
   character (len=20), dimension(nRatesMax) :: Reactions
   

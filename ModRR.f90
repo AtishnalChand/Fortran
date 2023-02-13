@@ -12,9 +12,8 @@ module ModReactionRatePerturb
   contains
     subroutine read_csvfile()
        implicit none
-       integer, parameter :: n = 1
 
-       ! Open the file "data.csv"
+       ! Open the data file
        open(10, file = "reaction_rates.csv", status = 'old', Iostat = ierror)
          
        ! Check if there was an error opening the csv file
@@ -23,43 +22,24 @@ module ModReactionRatePerturb
           stop
        end if
          
-       ! Read a null line from the file ( reads and ignores the  header line)
-        read(10, '()', Iostat = ierror)
-         
-        ! Check if there was an error reading the header line
-        if (ierror /= 0) Then
-            print*, "Error reading header line from file data.csv"
-            stop
-        end if
-        
        ! Read the data from the file
-        do i = 1, n
-             read (10, *, Iostat = ierror) A1, A2, A3, A4, A5, A6
+        do i = 1, nPerturbedRates
+             read (10, *, Iostat = ierror) Reaction(i), rates(i)
            
          ! Check if there was an error reading the data
          if (ierror /= 0) then
-             print*, "Error reading data from file data.csv"
+             print*, "Error reading data from the file reaction_rates.csv"
               stop
           end if
-           
-              ! Print the reaction rates to confirm if values were successfully read and stored in the respective variable
-               print*, A1, A2, A3, A4, A5, A6
           end do
           close(10)
-    
-     end subroutine read_csvfile
-
-     
+          
+          write (*,*) "Letters: ", Reaction(i), rates(i)
+          
+     end subroutine read_csvfile  
 end module ModReactionRatePerturb
 
-! Declare a main program to use the reaction rate module
-program Main
-  use ModReactionRatePerturb
-  implicit none
 
-
-  
-end program Main
 
 
 
